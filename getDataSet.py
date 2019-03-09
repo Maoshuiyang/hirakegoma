@@ -53,33 +53,6 @@ def getDataSet(img_rows,img_cols):
             #主要キャラたちは480枚ずつ。テスト用には40枚
             cutNum = 218
             cutNum2 =180
-
-        """    
-        if i == 2:
-            #othersは480枚用意します。テスト用には40枚
-            cutNum = 32
-            cutNum2 =26
-        if i == 3:
-            #othersは480枚用意します。テスト用には40枚
-            cutNum = 32
-            cutNum2 =26
-        if i == 4:
-            #othersは480枚用意します。テスト用には40枚
-            cutNum = 32
-            cutNum2 =26
-        if i == 5:
-            #othersは480枚用意します。テスト用には40枚
-            cutNum = 32
-            cutNum2 =26
-        if i == 6:
-            #othersは480枚用意します。テスト用には40枚
-            cutNum = 32
-            cutNum2 =26
-        if i == 7:
-            #othersは480枚用意します。テスト用には40枚
-            cutNum = 32
-            cutNum2 =26
-        """
             
         imgList = os.listdir(path+str(i))
         print(imgList)

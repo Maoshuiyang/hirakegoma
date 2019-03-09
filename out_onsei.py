@@ -3,7 +3,7 @@ import numpy as np
 #np.random.seed(1337) # for reproducibility
 import wave
 import pyaudio
-from predition_img import model_family_cnn
+from vgg16_like import model_family_cnn
 from keras.preprocessing import image
 import matplotlib.pyplot as plt
 import keras
