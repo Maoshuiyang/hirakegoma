@@ -49,31 +49,24 @@ for i in range(501,1000,1):
     imgSrc=[]
     for j in range(0,100000,1):
         j += 1        
-    #img = image.load_img("ohayo1_1_15_out.jpg", target_size=(img_rows,img_cols))
     imgSrc = image.load_img(path2+str(s)+'.jpg', target_size=(img_rows,img_cols))
     plt.imshow(imgSrc)
     plt.pause(1)
-    #plt.show()
     plt.close()
 
-    #imgSrc = img  #image.img_to_array(img)
     pred = prediction(imgSrc)
     print(pred[0])
-    #filename = path2+str(s)+".wav"
     if pred[0][0]>=0.5:
         filename = path2+"karasu-hageshii_out.wav"
         print("angry") #cat
-        #filename2='angry'+str(s)+'.wav'
         path = 'angry'
     elif pred[0][1]>=0.5:
         filename = path2+"karasu_kero_out3.wav"
         print("normal") #dog
-        #filename2='normal'+str(s)+'.wav'
         path = 'normal'
     elif pred[0][2]>=0.5:
         filename = path2+"karasu_kero_out1.wav"
         print("others") #pomeranian
-        #filename2='others'+str(s)+'.wav'
         path = 'others'
     
     dt_now = datetime.datetime.now()
@@ -84,4 +77,4 @@ for i in range(501,1000,1):
     new_path = shutil.move('./dog-cat/3karasu/wav/figure' + str(s)+ '.jpg', './dog-cat/3karasu/wav/' + path)
 
     s += 1
-        
+    
