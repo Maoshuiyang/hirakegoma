@@ -22,7 +22,7 @@ def start_measure():
     input1 =stream1.read(CHUNK)
     sig1 = np.frombuffer(input1, dtype="int16")/32768.0
     while True:
-        if max(sig1) > 0.001:
+        if max(sig1) > 0.0002:
             break
         input1 =stream1.read(CHUNK)
         sig1 = np.frombuffer(input1, dtype="int16")/32768.0
@@ -40,8 +40,12 @@ p=pyaudio.PyAudio()
 fr = RATE
 fn=51200*N/50
 fs=fn/fr
+path='./dog-cat/3karasu/wav/'
+FORMAT = pyaudio.paInt16
+CHANNELS = 1  #monoral
+#サンプリングレート、マイク性能に依存
 
-for s in range(0,900,1):
+for s in range(501,1000,1):
     print(s)
     start_measure()
 
@@ -55,6 +59,15 @@ for s in range(0,900,1):
     start_time=time.time()
     input = stream.read(CHUNK)
     stop_time=time.time()
+    frames = []
+    frames.append(input)
+    
+    wf = wave.open(path+str(s)+'.wav', 'wb')
+    wf.setnchannels(CHANNELS)
+    wf.setsampwidth(p.get_sample_size(FORMAT))  #width=2 ; 16bit
+    wf.setframerate(RATE)
+    wf.writeframes(b''.join(frames))
+    wf.close()
 
     sig =[]
     sig = np.frombuffer(input, dtype="int16")  /32768.0
@@ -68,8 +81,9 @@ for s in range(0,900,1):
     ax2.set_axis_off()
     
     plt.pause(0.01)
-    plt.savefig('out_test/figure.jpg') #out_test/figure.jpg  #'train_images/0/figure' +str(s)+'.jpg'
+    plt.savefig('out_test/figure.jpg') #out_test/figure.jpg  #'train_images/0/figure' +str(s)+'.jpg' #dog-cat/1/figure' +str(s)+'.jpg
     #output = stream.write(input)
+    plt.savefig(path+'figure'+str(s)+'.jpg')
 
 stream.stop_stream()
 stream.close()
