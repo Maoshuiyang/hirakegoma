@@ -75,28 +75,13 @@ for i in range(501,1000,1):
         print("others") #pomeranian
         #filename2='others'+str(s)+'.wav'
         path = 'others'
-            
     
     dt_now = datetime.datetime.now()
     with open('./dog-cat/3karasu/wav/file.txt', 'a') as f: #w
         f.write(str(dt_now)+'_'+str(s)+': '+path+'  '+str(pred[0])+'\n')
-    
-    #print(os.listdir('./dog-cat/3karasu/wav'))
-    # ['file.txt', 'dir']
-
-    #print(os.listdir('./dog-cat/3karasu/wav/angry'))
-    # []
-    
+            
     new_path = shutil.move('./dog-cat/3karasu/wav/' + str(s)+'.wav', './dog-cat/3karasu/wav/'+ path)
     new_path = shutil.move('./dog-cat/3karasu/wav/figure' + str(s)+ '.jpg', './dog-cat/3karasu/wav/' + path)
 
-    #print(new_path)
-    # temp/dir2/file.txt
-
-    #print(os.listdir('./dog-cat/3karasu/wav'))
-    # ['dir']
-
-    #print(os.listdir('./dog-cat/3karasu/wav/angry'))
-    # ['file.txt']
     s += 1
         
