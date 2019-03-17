@@ -13,10 +13,12 @@ def start_measure():
     CHUNK=1024
     RATE=44100 #11025 #22050  #44100
     p1=pyaudio.PyAudio()
+    audio_index=1
     input1 = []
     stream1=p1.open(format = pyaudio.paInt16,
                   channels = 1,
                   rate = RATE,
+                  input_device_index = audio_index,  
                   frames_per_buffer = CHUNK,
                   input = True) 
     input1 =stream1.read(CHUNK)
@@ -45,13 +47,14 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1  #monoral
 #サンプリングレート、マイク性能に依存
 
-for s in range(501,1000,1):
+for s in range(0,1000,1):
     print(s)
     start_measure()
-
+    audio_index=1
     stream=p.open(format = pyaudio.paInt16,
               channels = 1,
               rate = RATE,
+              input_device_index = audio_index,    
               frames_per_buffer = CHUNK,
               input = True)
 
@@ -83,7 +86,7 @@ for s in range(501,1000,1):
     plt.pause(0.01)
     plt.savefig('out_test/figure.jpg') #out_test/figure.jpg  #'train_images/0/figure' +str(s)+'.jpg' #dog-cat/1/figure' +str(s)+'.jpg
     #output = stream.write(input)
-    plt.savefig(path+'figure'+str(s)+'.jpg')
+    #plt.savefig(path+'figure'+str(s)+'.jpg')
 
 stream.stop_stream()
 stream.close()
