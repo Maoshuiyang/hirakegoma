@@ -63,7 +63,7 @@ while True:
         break
     # 画面表示
     cv2.imshow('frame', frame1)
-    output = stream.write(input)
+    #output = stream.write(input)
     frames.append(input)
     if time.time()-st >= 20:
         # 終了処理
