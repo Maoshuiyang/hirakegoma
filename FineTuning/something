@@ -1,1 +1,11 @@
-
+Data	; contains Training Data of Crow
+VGG16_finetuning.py	; Ordinary FineTuning by VGG16
+VGG16_finetuning_block3.py	; Small part of VGG16 has created by using block3, make FineTuning by small scale. 
+camera_input_movie_karasu.py	; Application of Camera_input makes movie 
+getDataSet.py	; makes x_train, y_train, x_test, y_test data
+karasu-miyama_out1.wav	; Sounds crows cry of angry case.
+karasu-normal_out1.wav	; Sounds crows cry pf normal case.
+karasu-others_out1.wav	; Sounds crows cry of others.
+karasu_speak.py	; makes crow speak according the file of figure.jpg.
+params_model_epoch_karasu_50_008block3_pool.hdf5	; Pretrained weights by VGG16_finetuning_block3.py
+pyaudio_realtime.py  ;makes STFT file 'figure.jpg' in real-time.
